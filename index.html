@@ -7,17 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Core Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to right, #eef4ff, #dbe9ff);
       color: #333;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -31,18 +29,11 @@
     header::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background-color: rgba(0, 0, 0, 0.5);
     }
 
-    header h1,
-    header p {
-      position: relative;
-      z-index: 2;
-    }
+    header h1, header p { position: relative; z-index: 2; }
 
     header h1 {
       font-size: 3.5em;
@@ -213,6 +204,59 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Floating Contact Button */
+    .contact-float {
+      position: fixed;
+      right: 20px;
+      bottom: 25px;
+      z-index: 1000;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-float:hover {
+      background-color: #0056b3;
+    }
+
+    .confirmation {
+      text-align: center;
+      font-size: 18px;
+      color: green;
+      margin-top: 20px;
+    }
+
+    /* WhatsApp + Email Quick Icons */
+    .quick-contact-icons {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .quick-contact-icons a {
+      background-color: #25D366;
+      color: white;
+      padding: 10px 12px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-decoration: none;
+    }
+
+    .quick-contact-icons a.email {
+      background-color: #ea4335;
+    }
   </style>
 </head>
 <body>
@@ -267,11 +311,12 @@
 
   <section id="contact" data-aos="fade-up">
     <h2>📬 Contact Me</h2>
-    <form action="#" method="POST">
+    <form id="contact-form" action="#" method="POST" onsubmit="return showConfirmation()">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <input type="submit" value="Send Message">
+      <div class="confirmation" id="confirmation" style="display: none;">✅ Message sent! I'll get back to you soon.</div>
     </form>
   </section>
 
@@ -280,9 +325,21 @@
     <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
   </footer>
 
+  <!-- Floating Button + Quick Icons -->
+  <a href="#contact" class="contact-float">📩 Send Message</a>
+
+  <div class="quick-contact-icons">
+    <a href="https://wa.me/919999999999" target="_blank" title="Chat on WhatsApp">🟢</a>
+    <a href="mailto:your@email.com" class="email" title="Email Me">✉️</a>
+  </div>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+    function showConfirmation() {
+      document.getElementById('confirmation').style.display = 'block';
+      return false; // Prevent actual form submission
+    }
   </script>
 </body>
 </html>
