@@ -1,499 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Deepnarayan's Computer Tutorials</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        /* Example: Basic Responsive Layout */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepnarayan's Computer Tutorials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            width: 100%;
-            margin: 0 auto;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #eef4ff, #dbe9ff);
+      color: #333;
+      line-height: 1.6;
+    }
 
-        header, footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    header {
+      background: url('https://images.unsplash.com/photo-1581091012184-7c2a63c0026e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
 
-        @media (max-width: 768px) {
-            header, footer {
-                padding: 15px;
-            }
-        }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        nav {
-            background-color: #333;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    header h1,
+    header p {
+      position: relative;
+      z-index: 2;
+    }
 
-        .nav-list {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-            margin: 0;
-        }
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+    }
 
-        .nav-list li {
-            margin: 0 20px;
-        }
+    header p {
+      font-size: 1.4em;
+    }
 
-        .nav-list li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
+    nav {
+      background-color: #0056b3;
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
 
-        .nav-list li a:hover {
-            text-decoration: underline;
-        }
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
 
-        .video-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
+    .nav-list li {
+      margin: 0 25px;
+    }
 
-        .video-item {
-            margin: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    .nav-list li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
 
-        form {
-            max-width: 600px;
-            margin: auto;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-        }
+    .nav-list li a:hover {
+      color: #ffe600;
+    }
 
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-        }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        input[type="submit"] {
-            background-color: #333;
-            color: white;
-            border: none;
-        }
+    h2 {
+      font-size: 2.4em;
+      color: #003366;
+      margin-bottom: 20px;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
 
-        #search {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .video-item iframe {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-        #search-bar {
-            width: 60%;
-            padding: 10px;
-            margin-right: 10px;
-        }
+    .subscribe-section {
+      background: linear-gradient(to right, #e6f0ff, #cfe0ff);
+      border-radius: 12px;
+      padding: 50px 20px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
 
-        button {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-        }
+    .subscribe-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
 
-        button:hover {
-            background-color: #555;
-        }
+    .subscribe-button {
+      background-color: #ff0000;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+    }
 
-        .blog-posts {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
+    .subscribe-button:hover {
+      background-color: #cc0000;
+    }
 
-        .post {
-            width: 300px;
-            margin: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-        }
+    .blog-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
 
-        .post h3 {
-            margin-bottom: 10px;
-        }
+    .blog-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      text-align: left;
+    }
 
-        .post a {
-            color: #333;
-            text-decoration: none;
-        }
+    .blog-card h3 {
+      color: #0056b3;
+      margin-bottom: 10px;
+    }
 
-        .post a:hover {
-            text-decoration: underline;
-        }
+    .blog-card p {
+      font-size: 15px;
+      color: #444;
+    }
 
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
+    .blog-card a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    form {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #002b5c;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <header data-aos="fade-in">
+    <h1>Deepnarayan's Computer Tutorials</h1>
+    <p>Master MS Word, Excel, & Computer Tricks — In Simple Hindi</p>
+  </header>
 
-<header>
-    <h1>Welcome to Deepnarayan's Computer Tutorials</h1>
-</header>
-
-<nav>
+  <nav>
     <ul class="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tutorials">Tutorials</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <li><a href="#tutorials">Tutorials</a></li>
+      <li><a href="#subscribe">Subscribe</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-</nav>
+  </nav>
 
-<section id="tutorials">
-    <h2>Our Tutorials</h2>
+  <section id="tutorials" data-aos="fade-up">
+    <h2>🎓 Latest Video Tutorials</h2>
     <div class="video-gallery">
-        <div class="video-item">
-            <iframe width="300" height="200" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <!-- Repeat video items -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/SHTYf0sudDk" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/_AM0f_rIafU" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
-</section>
+  </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form action="/submit_form" method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+  <section id="subscribe" class="subscribe-section" data-aos="zoom-in">
+    <h2>📺 Subscribe to My YouTube Channel</h2>
+    <img src="https://img.youtube.com/vi/SHTYf0sudDk/0.jpg" alt="Channel Thumbnail">
+    <p style="font-size: 18px;">Get weekly computer tutorials and tips straight to your feed. Don’t miss out!</p>
+    <a class="subscribe-button" href="http://www.youtube.com/@deepnarayanchakrabortty989?sub_confirmation=1" target="_blank">🔔 Subscribe Now</a>
+  </section>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+  <section id="blog" data-aos="fade-up">
+    <h2>📰 Blog Highlights</h2>
+    <div class="blog-preview">
+      <div class="blog-card">
+        <h3>How to Use MS Excel Like a Pro</h3>
+        <p>Discover beginner to advanced Excel tips that will supercharge your productivity.</p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="blog-card">
+        <h3>10 Keyboard Shortcuts You Must Know</h3>
+        <p>Speed up your work in MS Word and Windows using these awesome shortcuts.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </div>
+  </section>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" required></textarea><br><br>
-
-        <input type="submit" value="Submit">
+  <section id="contact" data-aos="fade-up">
+    <h2>📬 Contact Me</h2>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message">
     </form>
-</section>
+  </section>
 
-<section id="search">
-    <input type="text" id="search-bar" placeholder="Search tutorials...">
-    <button type="button" onclick="searchFunction()">Search</button>
-</section>
-
-<section id="blog">
-    <h2>Latest Blog Posts</h2>
-    <div class="blog-posts">
-        <div class="post">
-            <h3>Blog Post Title 1</h3>
-            <p>Summary of the post...</p>
-            <a href="#">Read more</a>
-        </div>
-        <!-- Repeat blog posts -->
-    </div>
-</section>
-
-<footer>
+  <footer>
     <p>&copy; 2025 Deepnarayan's Computer Tutorials</p>
     <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-</footer>
+  </footer>
 
-<script>
-    function searchFunction() {
-        let query = document.getElementById('search-bar').value;
-        alert("Searching for: " + query);
-    }
-</script>
-
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Deepnarayan's Computer Tutorials</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        header, footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        @media (max-width: 768px) {
-            header, footer {
-                padding: 15px;
-            }
-        }
-
-        nav {
-            background-color: #333;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-list {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-list li {
-            margin: 0 20px;
-        }
-
-        .nav-list li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .nav-list li a:hover {
-            text-decoration: underline;
-        }
-
-        .video-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .video-item {
-            margin: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        form {
-            max-width: 600px;
-            margin: auto;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-        }
-
-        input[type="submit"] {
-            background-color: #333;
-            color: white;
-            border: none;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-
-        #search {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        #search-bar {
-            width: 60%;
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        .blog-posts {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .post {
-            width: 300px;
-            margin: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .post h3 {
-            margin-bottom: 10px;
-        }
-
-        .post a {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .post a:hover {
-            text-decoration: underline;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Welcome to Deepnarayan's Computer Tutorials</h1>
-    <a href="http://www.youtube.com/@deepnarayanchakrabortty989" target="_blank" style="color: white; text-decoration: none; background-color: red; padding: 10px 15px; border-radius: 5px; display: inline-block; margin-top: 10px;">
-        📺 Visit My YouTube Channel
-    </a>
-</header>
-
-<nav>
-    <ul class="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tutorials">Tutorials</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<section id="tutorials">
-    <h2 style="text-align: center;">Our Tutorials</h2>
-    <div class="video-gallery">
-        <div class="video-item">
-            <iframe width="300" height="200" src="https://www.youtube.com/embed/SHTYf0sudDk" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="video-item">
-            <iframe width="300" height="200" src="https://www.youtube.com/embed/_AM0f_rIafU" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-</section>
-
-<section id="subscribe" style="text-align: center; margin: 40px 0;">
-    <h2>Subscribe to My YouTube Channel</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed?listType=user_uploads&list=deepnarayanchakrabortty989" frameborder="0" allowfullscreen></iframe>
-    <br><br>
-    <a href="http://www.youtube.com/@deepnarayanchakrabortty989?sub_confirmation=1" target="_blank" style="background-color: red; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-        🔔 Subscribe Now
-    </a>
-</section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form action="/submit_form" method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" required></textarea><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</section>
-
-<section id="search">
-    <input type="text" id="search-bar" placeholder="Search tutorials...">
-    <button type="button" onclick="searchFunction()">Search</button>
-</section>
-
-<section id="blog">
-    <h2>Latest Blog Posts</h2>
-    <div class="blog-posts">
-        <div class="post">
-            <h3>Blog Post Title 1</h3>
-            <p>Summary of the post...</p>
-            <a href="#">Read more</a>
-        </div>
-        <!-- Repeat blog posts -->
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2025 Deepnarayan's Computer Tutorials</p>
-    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-</footer>
-
-<script>
-    function searchFunction() {
-        let query = document.getElementById('search-bar').value;
-        alert("Searching for: " + query);
-    }
-</script>
-
-</body>
-</html>
-<section id="subscribe" style="padding: 40px 20px; background: #f0f0f0; text-align: center;">
-    <h2 style="font-size: 28px; margin-bottom: 20px;">🎥 Subscribe to My YouTube Channel</h2>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-        <!-- Thumbnail / Preview Box -->
-        <div style="margin: 10px;">
-            <a href="http://www.youtube.com/@deepnarayanchakrabortty989" target="_blank">
-                <img src="https://img.youtube.com/vi/SHTYf0sudDk/0.jpg" alt="YouTube Thumbnail" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-            </a>
-        </div>
-
-        <!-- Subscribe Box -->
-        <div style="margin: 10px; max-width: 400px;">
-            <p style="font-size: 18px; color: #333;">
-                Want to learn MS Word, Excel, and computer tricks in simple Hindi? <br>
-                Subscribe now to stay updated with new tutorials every week!
-            </p>
-            <a href="http://www.youtube.com/@deepnarayanchakrabortty989?sub_confirmation=1" target="_blank"
-               style="display: inline-block; background-color: red; color: white; font-size: 18px; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin-top: 10px;">
-                🔔 Subscribe Now
-            </a>
-        </div>
-    </div>
-</section>
